@@ -9,18 +9,18 @@ public class SinglyLinkedList {
             cabeza=nuevoNodo;
         }else{
             Nodo temp=cabeza;
-            while(temp.siguiente!=null){
-                temp=temp.siguiente;
+            while(temp.getNodo()!=null){
+                temp=temp.getNodo();
             }
-            temp.siguiente=nuevoNodo;
+            temp.setNodo(nuevoNodo);;
         }
 
     }
     public void mostrar(){
         Nodo temp= cabeza;
         while(temp!=null){
-            System.out.print(temp.dato+"-> ");
-            temp=temp.siguiente;
+            System.out.print(temp.getDato()+"-> ");
+            temp=temp.getNodo();
         }
         System.out.println("null");
     }
@@ -32,11 +32,11 @@ public class SinglyLinkedList {
         }else{
             Nodo temp=cabeza;
             while(temp!=null){
-                if(temp.dato==value){
+                if(temp.getDato()==value){
                     System.out.println("valor encontrado");
                     return true;
                 }
-                temp=temp.siguiente;
+                temp=temp.getNodo();
             }
             System.out.println("valor no encontrado");
             return false;
@@ -44,26 +44,26 @@ public class SinglyLinkedList {
     }
 
     public void eliminar(Integer value){
-        System.out.println(cabeza.dato);
+        System.out.println(cabeza.getDato());
         if(cabeza==null){
             System.out.println("lista vacia");
         }else{
             Nodo temp=cabeza;boolean done=false;
-            if(cabeza.dato==value){
-                cabeza=temp.siguiente;done=true;
+            if(cabeza.getDato()==value){
+                cabeza=temp.getNodo();done=true;
             }
             while(temp!=null&&!done){
-                System.out.println(temp.dato+"|"+temp.siguiente.dato);
-                if(temp.siguiente.dato==value){
-                    if(temp.siguiente.siguiente==null){
-                        temp.siguiente=null;
+                System.out.println(temp.getDato()+"|"+temp.getNodo().getDato());
+                if(temp.getNodo().getDato()==value){
+                    if(temp.getNodo().getNodo()==null){
+                        temp.setNodo(null);
                         done=true;
                     }else{
-                        temp.siguiente=temp.siguiente.siguiente;
+                        temp.setNodo(temp.getNodo().getNodo());
                         done=true;
                     }
                 }
-                temp=temp.siguiente;
+                temp=temp.getNodo();
             }
             
         }
